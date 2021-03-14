@@ -203,4 +203,122 @@ class PasswordPolicyConfig {
 			0
 		);
 	}
+
+	/**
+	 * get the enforced minimum length of sharing passwords
+	 *
+	 * @return int
+	 */
+	public function getSharingMinLength(): int {
+		$sharingMinLength = $this->config->getAppValue('password_policy', 'sharingMinLength', '8');
+		return (int)$sharingMinLength;
+	}
+
+	/**
+	 * set minimal length of sharing passwords
+	 *
+	 * @param int $sharingMinLength
+	 */
+	public function setSharingMinLength(int $sharingMinLength) {
+		$this->config->setAppValue('password_policy', 'sharingMinLength', $sharingMinLength);
+	}
+
+	/**
+	 * Whether non-common passwords should be enforced on sharing
+	 *
+	 * @return bool
+	 */
+	public function getSharingEnforceNonCommonPassword(): bool {
+		$sharingEnforceNonCommonPasswords = $this->config->getAppValue(
+			'password_policy',
+			'sharingEnforceNonCommonPassword',
+			'1'
+		);
+		return $sharingEnforceNonCommonPasswords === '1';
+	}
+
+	/**
+	* enforce upper and lower case characters in sharing passwords
+	*
+	* @param bool $sharingEnforceNonCommonPasswords
+	*/
+   public function setSharingEnforceNonCommonPassword(bool $sharingEnforceNonCommonPasswords) {
+	   $value = $sharingEnforceNonCommonPasswords === true ? '1' : '0';
+	   $this->config->setAppValue('password_policy', 'sharingEnforceNonCommonPasswords', $value);
+   }
+
+	/**
+	 * does the sharing password need to contain upper and lower case characters
+	 *
+	 * @return bool
+	 */
+	public function getSharingEnforceUpperLowerCase(): bool {
+		$sharingEnforceUpperLowerCase = $this->config->getAppValue(
+			'password_policy',
+			'sharingEnforceUpperLowerCase',
+			'0'
+		);
+
+		return $sharingEnforceUpperLowerCase === '1';
+	}
+
+	/**
+	 * enforce upper and lower case characters in sharing passwords
+	 *
+	 * @param bool $sharingEnforceUpperLowerCase
+	 */
+	public function setSharingEnforceUpperLowerCase(bool $sharingEnforceUpperLowerCase) {
+		$value = $sharingEnforceUpperLowerCase === true ? '1' : '0';
+		$this->config->setAppValue('password_policy', 'sharingEnforceUpperLowerCase', $value);
+	}
+
+	/**
+	 * does the sharing password need to contain numeric characters
+	 *
+	 * @return bool
+	 */
+	public function getSharingEnforceNumericCharacters(): bool {
+		$sharingEnforceNumericCharacters = $this->config->getAppValue(
+			'password_policy',
+			'sharingEnforceNumericCharacters',
+			'0'
+		);
+
+		return $sharingEnforceNumericCharacters === '1';
+	}
+
+	/**
+	 * enforce numeric characters in sharing passwords
+	 *
+	 * @param bool $sharingEnforceNumericCharacters
+	 */
+	public function setSharingEnforceNumericCharacters(bool $sharingEnforceNumericCharacters) {
+		$value = $sharingEnforceNumericCharacters === true ? '1' : '0';
+		$this->config->setAppValue('password_policy', 'sharingEnforceNumericCharacters', $value);
+	}
+
+	/**
+	 * does the sharing password need to contain special characters
+	 *
+	 * @return bool
+	 */
+	public function getSharingEnforceSpecialCharacters(): bool {
+		$sharingEnforceSpecialCharacters = $this->config->getAppValue(
+			'password_policy',
+			'sharingEnforceSpecialCharacters',
+			'0'
+		);
+
+		return $sharingEnforceSpecialCharacters === '1';
+	}
+
+	/**
+	 * enforce special characters in sharing passwords
+	 *
+	 * @param bool $sharingEnforceSpecialCharacters
+	 */
+	public function setSharingEnforceSpecialCharacters(bool $sharingEnforceSpecialCharacters) {
+		$value = $sharingEnforceSpecialCharacters === true ? '1' : '0';
+		$this->config->setAppValue('password_policy', 'sharingEnforceSpecialCharacters', $value);
+	}
 }
